@@ -55,3 +55,8 @@ Duplicate activation after the change: **none in the 8 dry runs**. Caveat: skill
 
 ## 7. Not done / needs approval
 No skill, package or MCP server was deleted, uninstalled or replaced. No settings or permissions changed. Backups: `~/.claude/backups/CLAUDE.md.2026-11-12.pre-cri.bak` and `Claud-CLAUDE.md.2026-11-12.pre-cri.bak`.
+
+## Update (2026-11-12, after setup)
+- `design-taste-frontend`, `ui-ux-taste` and `review-changes` were moved from the project to `~/.claude/skills` (global). `review-changes` still needs the code-review-graph MCP, which is configured per project.
+- Cost data now exists: `~/.claude/metrics/costs.jsonl` is written by a single ECC `cost-tracker.js` Stop hook. ECC `hooks_enabled` remains false, so `skill-health` and `continuous-learning-v2` still have no hook data. The hook path is pinned to `ecc/2.2.3`.
+- Statements above that the cost file does not exist describe the state at audit time.

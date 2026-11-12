@@ -5,8 +5,8 @@
  "skills": [
   {
    "canonical": "design-taste-frontend",
-   "path": "<project>/.claude/skills/design-taste-frontend",
-   "source": "project-local (unknown upstream)",
+   "path": "~/.claude/skills/design-taste-frontend",
+   "source": "global (moved from project 2026-11-12; unknown upstream)",
    "version": null,
    "category": "ui-design",
    "role": "primary-ui-web",
@@ -22,8 +22,8 @@
   },
   {
    "canonical": "ui-ux-taste",
-   "path": "<project>/.claude/skills/ui-ux-taste",
-   "source": "project-local",
+   "path": "~/.claude/skills/ui-ux-taste",
+   "source": "global (moved from project 2026-11-12)",
    "version": null,
    "category": "ui-design",
    "role": "primary-ui-app",
@@ -570,18 +570,18 @@
   },
   {
    "canonical": "review-changes",
-   "path": "<project>/.claude/skills/review-changes",
-   "source": "project-local",
+   "path": "~/.claude/skills/review-changes",
+   "source": "global (moved from project 2026-11-12)",
    "version": null,
    "category": "code-review",
    "role": "change-specific",
    "responsibility": "Graph-based change/impact review (1.3KB); uses code-review-graph MCP",
    "dependencies": [
-    "code-review-graph MCP"
+    "code-review-graph MCP (configured per project in .mcp.json)"
    ],
    "duplicates": [],
    "activate_when": "Small-to-medium change in a repo whose graph is built, as a cheaper substitute for code-review",
-   "never_activate_when": "Repos without .code-review-graph",
+   "never_activate_when": "Repos without .code-review-graph or without the MCP configured",
    "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
    "last_verified": "2026-11-12"
   },
@@ -664,7 +664,7 @@
   },
   {
    "canonical": "explore-codebase",
-   "path": "<project>/.claude/skills/explore-codebase",
+   "path": "~/Documents/Claud/.claude/skills/explore-codebase",
    "source": "project-local",
    "version": null,
    "category": "codebase-exploration",
@@ -857,13 +857,13 @@
    "version": "2.2.3",
    "category": "cost-reporting",
    "role": "reporting",
-   "responsibility": "Spend/usage from ~/.claude/metrics/costs.jsonl. THAT FILE DOES NOT EXIST (ECC hooks disabled)",
+   "responsibility": "Spend/usage from ~/.claude/metrics/costs.jsonl (written by a narrow Stop hook since 2026-11-12; other ECC hooks stay off)",
    "dependencies": [
-    "ECC cost-tracker hook enabled"
+    "cost-tracker Stop hook in settings.json (path pinned to ecc 2.2.3)"
    ],
    "duplicates": [],
    "activate_when": "User asks about spend",
-   "never_activate_when": "Any task unless metrics log exists",
+   "never_activate_when": "Trivial tasks",
    "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
    "last_verified": "2026-11-12"
   },
@@ -876,7 +876,7 @@
    "role": "reporting",
    "responsibility": "Terminal/CSV report from same log",
    "dependencies": [
-    "ECC cost-tracker hook enabled"
+    "cost-tracker Stop hook in settings.json (path pinned to ecc 2.2.3)"
    ],
    "duplicates": [],
    "activate_when": "User asks for report AND log exists",

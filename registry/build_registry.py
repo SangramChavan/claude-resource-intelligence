@@ -13,17 +13,17 @@ def e(name, path, cap, resp, act, excl, dup=None, src=None, ver=None, deps=None,
                 responsibility=resp, dependencies=deps or [], duplicates=dup or [],
                 activate_when=act, never_activate_when=excl, security_status=sec, last_verified=VERIFIED)
 
-P = os.environ.get("CRI_PROJECT_SKILLS", H + "/.claude/skills")
+P = os.path.expanduser(os.environ.get("CRI_PROJECT_SKILLS", "~/Documents/Claud/.claude/skills"))  # project-local skills (explore-codebase)
 G = H + "/.claude/skills"
 ECC = "ecc@2.2.3 (affaan-m/ECC)"
 S = []
 # ---- UI design ----
 S += [
- e("design-taste-frontend", P+"/design-taste-frontend", "ui-design", "Primary web UI: brief inference, design dials, official design-system mapping, anti-slop pre-flight (87KB ~22k tok)",
+ e("design-taste-frontend", G+"/design-taste-frontend", "ui-design", "Primary web UI: brief inference, design dials, official design-system mapping, anti-slop pre-flight (87KB ~22k tok)",
    "New or redesigned website, landing page, portfolio, marketing site", "Dashboards/forms/multi-step product flows (use ui-ux-taste); native Apple apps; one-line copy tweaks",
-   dup=["ecc:frontend-design-direction"], src="project-local (unknown upstream)", role="primary-ui-web"),
- e("ui-ux-taste", P+"/ui-ux-taste", "ui-design", "Primary for product UI: dashboards, forms, flows; reduction of complexity (6.5KB ~1.6k tok)",
-   "App/dashboard/form/flow UI, simplify or review an interface", "Marketing/landing pages (design-taste-frontend)", src="project-local", role="primary-ui-app"),
+   dup=["ecc:frontend-design-direction"], src="global (moved from project 2026-11-12; unknown upstream)", role="primary-ui-web"),
+ e("ui-ux-taste", G+"/ui-ux-taste", "ui-design", "Primary for product UI: dashboards, forms, flows; reduction of complexity (6.5KB ~1.6k tok)",
+   "App/dashboard/form/flow UI, simplify or review an interface", "Marketing/landing pages (design-taste-frontend)", src="global (moved from project 2026-11-12)", role="primary-ui-app"),
  e("ecc:design-system", E+"/skills/design-system", "design-system", "Optional: extract tokens from existing codebase, DESIGN.md, 10-dim audit, AI-slop flags (2.8KB)",
    "Need design tokens/DESIGN.md or visual-consistency audit", "Single landing page with no system requirement", dup=["design-system"], src=ECC, ver="2.2.3", role="design-system-specialist"),
  e("design-system", G+"/design-system", "design-system", "Fallback: 3-layer token architecture + slide token pipeline. Lists agents that may not exist (ui-ux-designer, frontend-developer)",
@@ -65,7 +65,7 @@ S += [
 # ---- Code review ----
 S += [
  e("code-review", "built-in skill (not on disk)", "code-review", "DEFAULT reviewer: diff/PR, effort levels, optional --fix", "Review of a diff, branch or PR", "Trivial edits", dup=["engineering:code-review", "ecc:code-review"], src="Claude Code built-in", role="default"),
- e("review-changes", P+"/review-changes", "code-review", "Graph-based change/impact review (1.3KB); uses code-review-graph MCP", "Small-to-medium change in a repo whose graph is built, as a cheaper substitute for code-review", "Repos without .code-review-graph", deps=["code-review-graph MCP"], src="project-local", role="change-specific"),
+ e("review-changes", G+"/review-changes", "code-review", "Graph-based change/impact review (1.3KB); uses code-review-graph MCP", "Small-to-medium change in a repo whose graph is built, as a cheaper substitute for code-review", "Repos without .code-review-graph or without the MCP configured", deps=["code-review-graph MCP (configured per project in .mcp.json)"], src="global (moved from project 2026-11-12)", role="change-specific"),
  e("ponytail-review", H+"/.claude/plugins/cache/ponytail/ponytail/4.10.0/.openclaw/skills/ponytail-review", "code-review", "Over-engineering finder only (different dimension)", "Asked to find code to delete", "Correctness review", src="DietrichGebert/ponytail", ver="4.10.0", role="specialist"),
  e("simplify", "built-in skill (not on disk)", "refactor", "Applies simplification fixes (not a reviewer)", "After a change, to clean it up", "Bug hunting", src="Claude Code built-in", role="simplifier"),
  e("ecc:review-pr", E+"/commands/review-pr.md", "code-review", "Multi-agent PR pass (6 agents)", "Critical PR needing second independent review", "Routine changes (costly)", src=ECC, ver="2.2.3", role="critical-second-reviewer"),
@@ -92,8 +92,8 @@ S += [
 # ---- Cost / model ----
 S += [
  e("ecc:model-route", E+"/commands/model-route.md", "model-routing", "Recommend model tier by complexity/risk/budget (697B)", "Non-trivial task where model choice matters", "Quick tasks", src=ECC, ver="2.2.3", role="canonical-router"),
- e("ecc:cost-tracking", E+"/skills/cost-tracking", "cost-reporting", "Spend/usage from ~/.claude/metrics/costs.jsonl. THAT FILE DOES NOT EXIST (ECC hooks disabled)", "User asks about spend", "Any task unless metrics log exists", deps=["ECC cost-tracker hook enabled"], src=ECC, ver="2.2.3", role="reporting"),
- e("ecc:cost-report", E+"/commands/cost-report.md", "cost-reporting", "Terminal/CSV report from same log", "User asks for report AND log exists", "Trivial tasks", deps=["ECC cost-tracker hook enabled"], src=ECC, ver="2.2.3", role="reporting"),
+ e("ecc:cost-tracking", E+"/skills/cost-tracking", "cost-reporting", "Spend/usage from ~/.claude/metrics/costs.jsonl (written by a narrow Stop hook since 2026-11-12; other ECC hooks stay off)", "User asks about spend", "Trivial tasks", deps=["cost-tracker Stop hook in settings.json (path pinned to ecc 2.2.3)"], src=ECC, ver="2.2.3", role="reporting"),
+ e("ecc:cost-report", E+"/commands/cost-report.md", "cost-reporting", "Terminal/CSV report from same log", "User asks for report AND log exists", "Trivial tasks", deps=["cost-tracker Stop hook in settings.json (path pinned to ecc 2.2.3)"], src=ECC, ver="2.2.3", role="reporting"),
  e("ecc:context-budget", E+"/skills/context-budget", "context", "Routes to native context meter; static audit only on request", "Context capacity questions", "Normal tasks", src=ECC, ver="2.2.3", role="context"),
  e("ecc:strategic-compact", E+"/skills/strategic-compact", "context", "Compaction timing", "Long session near limit", "Short sessions", src=ECC, ver="2.2.3", role="context"),
  e("ecc:token-budget-advisor", E+"/skills/token-budget-advisor", "budget", "Response-depth choice (25/50/75/100%)", "User asks for a short/long answer choice", "Default", src=ECC, ver="2.2.3", role="budget"),
@@ -102,10 +102,10 @@ S += [
  e("ecc:token-card", E+"/skills/token-card", "visualization", "Commits a usage card file to a repo", "Explicit request only", "Always otherwise", src=ECC, ver="2.2.3", role="visualization"),
 ]
 reg = dict(schema=1, generated=VERIFIED, note="Descriptions/headings read directly; security_status means no script audit yet. Token figures elsewhere are bytes/4 estimates.", skills=S)
-CFDIR = os.environ.get("CRI_CF_SKILLS_DIR", "")  # path to the cloudflare plugin skills dir
+CFDIR = os.environ.get("CRI_CF_SKILLS_DIR", H + "/.claude/plugins/cache/cloudflare/cloudflare/1.0.4/skills")  # cloudflare plugin skills dir
 # derived from directories present in both places, not hand-listed
 bare_cf = sorted(set(os.listdir(G)) & set(os.listdir(CFDIR))) if CFDIR and os.path.isdir(CFDIR) else []
-print("cloudflare twins:", len(bare_cf), "(set CRI_CF_SKILLS_DIR to compute)")
+print("cloudflare twins:", len(bare_cf), "from", CFDIR)
 alias = {
  "ui_design_web": dict(canonical="design-taste-frontend", aliases=["ecc:frontend-design-direction", "ui-ux-pro-max (default use)", "design (UI route)"]),
  "ui_design_app": dict(canonical="ui-ux-taste", aliases=[]),
@@ -121,6 +121,11 @@ alias = {
  "codebase_graph": dict(canonical="code-review-graph (MCP)", aliases=[], secondary="graphify (non-code corpora)"),
  "not_ui": dict(note="ecc:taste, ecc:taste-application, ecc:taste-distillation are VIDEO skills (angelcore music video / LUT style packs). Never match for UI taste requests."),
 }
+def scrub(o):  # write portable paths: home dir becomes ~
+    if isinstance(o, dict): return {k: scrub(v) for k, v in o.items()}
+    if isinstance(o, list): return [scrub(v) for v in o]
+    return o.replace(H, "~") if isinstance(o, str) else o
+reg, alias = scrub(reg), scrub(alias)
 base = os.path.dirname(os.path.abspath(__file__))
 json.dump(reg, open(base + "/skill-registry.json", "w"), indent=1)
 json.dump(alias, open(base + "/alias-map.json", "w"), indent=1)

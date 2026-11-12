@@ -41,14 +41,14 @@ Approval needed: install/uninstall skills, change permanent config, replace impl
 | Component | Class | Basis |
 |---|---|---|
 | Model choice | A | `ecc:model-route`; CRI only recommends tiers |
-| Cost/usage data | A | ECC `cost-tracker.js` Stop hook -> `~/.claude/metrics/costs.jsonl`; `ecc:cost-tracking`/`cost-report` read it |
+| Cost/usage data | A | ECC `cost-tracker.js` Stop hook -> `~/.claude/metrics/costs.jsonl`; `ecc:cost-tracking`/`cost-report` read it. Wired 2026-11-12 as one narrow Stop hook; ECC `hooks_enabled` stays false. Hook path is pinned to `ecc/2.2.3` and breaks silently on a plugin update |
 | Context/token budgeting | A | `ecc:context-budget`, `strategic-compact`, `token-budget-advisor` |
 | Code graph | A | code-review-graph MCP |
 | Skill discovery | A | native skill list |
 | Routing text in CLAUDE.md | B | one primary skill per job, tiers, fallbacks |
 | Alias map (duplicate prevention) | D (narrow) | No ECC skill marks overlaps: `skill-stocktake` rates quality, `config-gc` finds redundancy with confirm-each-delete, `skill-scout` searches before creating. Keep the alias map, but run `config-gc`/`skill-stocktake` for periodic audits instead of CRI reports |
 | Skill registry (58 entries) | C, shrink | Inventory/quality = `skill-stocktake` (results.json cache). Keep only what it lacks (canonical pick, fallback, token estimate) or drop the registry and keep the alias map |
-| skill-evaluations.json | A | `skill-health` dashboard already does usage/success rates; file deleted 2026-11-12 (backup in ~/.claude/backups/cri-2026-11-12). Needs ECC hook data, which is off |
-| Execution log + lessons | A/C | `continuous-learning-v2` (instincts, confidence, promote) and `/learn` cover this; both depend on ECC hooks (disabled) or manual runs. Replace the home-made log unless those prove unusable |
+| skill-evaluations.json | A | `skill-health` dashboard already does usage/success rates; file deleted 2026-11-12 (backup in ~/.claude/backups/cri-2026-11-12). Needs the wider ECC hooks, which stay off (only the cost Stop hook runs) |
+| Execution log + lessons | A/C | `continuous-learning-v2` (instincts, confidence, promote) and `/learn` cover this; both depend on ECC hooks (disabled) or manual runs. Until replaced, the log is appended by Claude per an instruction in the global CLAUDE.md (configuration, no hook) |
 Reviewed 2026-11-12 by reading each skill's description/scope (not by running them).
-Open to-dos: compare registry/alias/log against the ECC skills named above; capture a token/cost baseline once the hook has data; verify in a fresh CLI session which `cloudflare:*` skills exist.
+Open to-dos: compare registry/alias/log against the ECC skills named above; capture a token/cost baseline from `costs.jsonl` (has data since 2026-11-12); verify in a fresh CLI session which `cloudflare:*` skills exist and that the three moved skills are discovered.
