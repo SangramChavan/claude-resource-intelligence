@@ -7,6 +7,7 @@ This is a personal setup shared as a worked example. Skill names refer to skills
 ## What is here
 | Path | Purpose |
 |---|---|
+| `config/native-first-policy.md` | Governing principle: native first, then configure, extend, and build custom only with evidence; A/B/C/D classification of CRI components |
 | `config/routing-policy.md` | Tiers (quick/standard/complex/critical), per-domain defaults, fallbacks, model tiers |
 | `config/operating-rules.md` | Logging format and approval boundary |
 | `registry/skill-registry.json` | 58 canonical entries: path, source, role, activate/never-activate conditions |
