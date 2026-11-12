@@ -48,7 +48,7 @@ Approval needed: install/uninstall skills, change permanent config, replace impl
 | Routing text in CLAUDE.md | B | one primary skill per job, tiers, fallbacks |
 | Alias map (duplicate prevention) | D (narrow) | No ECC skill marks overlaps: `skill-stocktake` rates quality, `config-gc` finds redundancy with confirm-each-delete, `skill-scout` searches before creating. Keep the alias map, but run `config-gc`/`skill-stocktake` for periodic audits instead of CRI reports |
 | Skill registry (58 entries) | C, shrink | Inventory/quality = `skill-stocktake` (results.json cache). Keep only what it lacks (canonical pick, fallback, token estimate) or drop the registry and keep the alias map |
-| skill-evaluations.json (empty) | A | `skill-health` dashboard already does usage/success rates; delete the file rather than fill it. Needs ECC hook data, which is off |
+| skill-evaluations.json | A | `skill-health` dashboard already does usage/success rates; file deleted 2026-11-12 (backup in ~/.claude/backups/cri-2026-11-12). Needs ECC hook data, which is off |
 | Execution log + lessons | A/C | `continuous-learning-v2` (instincts, confidence, promote) and `/learn` cover this; both depend on ECC hooks (disabled) or manual runs. Replace the home-made log unless those prove unusable |
 Reviewed 2026-11-12 by reading each skill's description/scope (not by running them).
 Open to-dos: compare registry/alias/log against the ECC skills named above; capture a token/cost baseline once the hook has data; verify in a fresh CLI session which `cloudflare:*` skills exist.
