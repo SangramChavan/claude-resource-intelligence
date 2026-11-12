@@ -1,0 +1,978 @@
+{
+ "schema": 1,
+ "generated": "2026-11-12",
+ "note": "Descriptions/headings read directly; security_status means no script audit yet. Token figures elsewhere are bytes/4 estimates.",
+ "skills": [
+  {
+   "canonical": "design-taste-frontend",
+   "path": "<project>/.claude/skills/design-taste-frontend",
+   "source": "project-local (unknown upstream)",
+   "version": null,
+   "category": "ui-design",
+   "role": "primary-ui-web",
+   "responsibility": "Primary web UI: brief inference, design dials, official design-system mapping, anti-slop pre-flight (87KB ~22k tok)",
+   "dependencies": [],
+   "duplicates": [
+    "ecc:frontend-design-direction"
+   ],
+   "activate_when": "New or redesigned website, landing page, portfolio, marketing site",
+   "never_activate_when": "Dashboards/forms/multi-step product flows (use ui-ux-taste); native Apple apps; one-line copy tweaks",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ui-ux-taste",
+   "path": "<project>/.claude/skills/ui-ux-taste",
+   "source": "project-local",
+   "version": null,
+   "category": "ui-design",
+   "role": "primary-ui-app",
+   "responsibility": "Primary for product UI: dashboards, forms, flows; reduction of complexity (6.5KB ~1.6k tok)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "App/dashboard/form/flow UI, simplify or review an interface",
+   "never_activate_when": "Marketing/landing pages (design-taste-frontend)",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:design-system",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/design-system",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "design-system",
+   "role": "design-system-specialist",
+   "responsibility": "Optional: extract tokens from existing codebase, DESIGN.md, 10-dim audit, AI-slop flags (2.8KB)",
+   "dependencies": [],
+   "duplicates": [
+    "design-system"
+   ],
+   "activate_when": "Need design tokens/DESIGN.md or visual-consistency audit",
+   "never_activate_when": "Single landing page with no system requirement",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "design-system",
+   "path": "~/.claude/skills/design-system",
+   "source": "nextlevelbuilder family (unverified repo)",
+   "version": null,
+   "category": "design-system",
+   "role": "fallback",
+   "responsibility": "Fallback: 3-layer token architecture + slide token pipeline. Lists agents that may not exist (ui-ux-designer, frontend-developer)",
+   "dependencies": [],
+   "duplicates": [
+    "ecc:design-system"
+   ],
+   "activate_when": "Only when slides/brand pipeline needs token files",
+   "never_activate_when": "Any normal web UI task (ecc:design-system is canonical)",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ui-ux-pro-max",
+   "path": "~/.claude/skills/ui-ux-pro-max",
+   "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+   "version": "global copy unversioned; plugin 2.13.0",
+   "category": "ui-design",
+   "role": "visual-specialist",
+   "responsibility": "Optional visual-design data lookup: searchable styles/palettes/fonts (55KB ~14k tok). Global copy differs from plugin 2.13.0 copy",
+   "dependencies": [
+    "python3"
+   ],
+   "duplicates": [
+    "ui-ux-pro-max@plugin 2.13.0"
+   ],
+   "activate_when": "Explicit request for palette/font/style options backed by data, or stack-specific UI rules",
+   "never_activate_when": "Default web UI work (loads 14k tokens for little gain)",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ui-styling",
+   "path": "~/.claude/skills/ui-styling",
+   "source": "nextlevelbuilder family",
+   "version": null,
+   "category": "ui-implementation",
+   "role": "support",
+   "responsibility": "Support: shadcn/ui + Radix + Tailwind implementation patterns",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Stack is shadcn/Tailwind and components must be built",
+   "never_activate_when": "Other stacks (Material, Carbon, Fluent); pure design direction",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "apple-design",
+   "path": "~/.claude/skills/apple-design",
+   "source": "dickwu/apple-design-skill",
+   "version": null,
+   "category": "ui-design",
+   "role": "apple-specialist",
+   "responsibility": "Apple HIG reviewer/improver for iOS/macOS/Flutter/RN/Tauri/Electron",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Native Apple platform UI, explicit HIG/Apple-style request, UI review of mobile/desktop app screenshots",
+   "never_activate_when": "Ordinary web projects unless user asks for an Apple-like look",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "brand",
+   "path": "~/.claude/skills/brand",
+   "source": "nextlevelbuilder family",
+   "version": null,
+   "category": "branding",
+   "role": "brand-specialist",
+   "responsibility": "Brand voice, identity, guidelines, token sync",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Brand guidelines/voice/messaging work",
+   "never_activate_when": "Building UI",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "banner-design",
+   "path": "~/.claude/skills/banner-design",
+   "source": "nextlevelbuilder family",
+   "version": null,
+   "category": "banner",
+   "role": "banner-specialist",
+   "responsibility": "Banners/ad/social/hero creative with multiple art directions",
+   "dependencies": [],
+   "duplicates": [
+    "design (banner sub-route)"
+   ],
+   "activate_when": "Banner, cover, ad creative",
+   "never_activate_when": "Website UI",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "slides",
+   "path": "~/.claude/skills/slides",
+   "source": "nextlevelbuilder family",
+   "version": null,
+   "category": "presentation",
+   "role": "slides-specialist",
+   "responsibility": "Strategic HTML decks (Chart.js, tokens)",
+   "dependencies": [],
+   "duplicates": [
+    "design (slides sub-route)",
+    "ecc:frontend-slides"
+   ],
+   "activate_when": "Presentation/pitch deck as HTML",
+   "never_activate_when": "Websites",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "design",
+   "path": "~/.claude/skills/design",
+   "source": "nextlevelbuilder family",
+   "version": null,
+   "category": "branding-assets",
+   "role": "asset-specialist",
+   "responsibility": "Umbrella router; keep ONLY for logo, CIP mockups, icons, social photos (its other routes duplicate specialists)",
+   "dependencies": [
+    "Gemini API key (logo/icon)"
+   ],
+   "duplicates": [
+    "brand",
+    "banner-design",
+    "slides",
+    "design-system",
+    "ui-styling"
+   ],
+   "activate_when": "Logo, corporate identity program, SVG icons, social photos",
+   "never_activate_when": "Banner/slides/brand/tokens/UI (route to the specialist directly)",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:cloudflare",
+   "path": "plugin:cloudflare/skills/cloudflare",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "product choice/architecture on Cloudflare; routes to other CF skills",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/cloudflare (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'cloudflare' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:wrangler",
+   "path": "plugin:cloudflare/skills/wrangler",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Wrangler CLI for wrangler.* projects",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/wrangler (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'wrangler' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:cf-cli",
+   "path": "plugin:cloudflare/skills/cf-cli",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "cf CLI (beta) for new projects/API",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/cf-cli (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'cf-cli' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:workers-best-practices",
+   "path": "plugin:cloudflare/skills/workers-best-practices",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Workers production config and code review",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/workers-best-practices (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'workers-best-practices' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:workers-development",
+   "path": "plugin:cloudflare/skills/workers-development",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "local dev, Local Explorer, traces (NEW, no bare copy)",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'workers-development' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:durable-objects",
+   "path": "plugin:cloudflare/skills/durable-objects",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Durable Objects",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/durable-objects (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'durable-objects' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:web-perf",
+   "path": "plugin:cloudflare/skills/web-perf",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "web performance/CWV audit",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/web-perf (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'web-perf' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:workers-profiling",
+   "path": "plugin:cloudflare/skills/workers-profiling",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "CPU/memory profiling",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/workers-profiling (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'workers-profiling' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:frameworks-on-cloudflare",
+   "path": "plugin:cloudflare/skills/frameworks-on-cloudflare",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "framework apps on Workers (NEW)",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'frameworks-on-cloudflare' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:cloudflare-app-bootstrap",
+   "path": "plugin:cloudflare/skills/cloudflare-app-bootstrap",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "bindings/secrets/local run (NEW)",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'cloudflare-app-bootstrap' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:nextjs-on-cloudflare",
+   "path": "plugin:cloudflare/skills/nextjs-on-cloudflare",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Next.js via vinext",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/nextjs-on-cloudflare (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'nextjs-on-cloudflare' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:turnstile-spin",
+   "path": "plugin:cloudflare/skills/turnstile-spin",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Turnstile",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/turnstile-spin (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'turnstile-spin' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:cloudflare-email-service",
+   "path": "plugin:cloudflare/skills/cloudflare-email-service",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Email sending/routing",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/cloudflare-email-service (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'cloudflare-email-service' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:agents-sdk",
+   "path": "plugin:cloudflare/skills/agents-sdk",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Agents SDK",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/agents-sdk (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'agents-sdk' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "cloudflare:cloudflare-one",
+   "path": "plugin:cloudflare/skills/cloudflare-one",
+   "source": "plugin:cloudflare@1.0.4 (synced desktop plugin, repo cloudflare/skills)",
+   "version": "1.0.4",
+   "category": "cloudflare",
+   "role": "canonical",
+   "responsibility": "Zero Trust/SASE",
+   "dependencies": [
+    "cloudflare MCP needs OAuth for live API"
+   ],
+   "duplicates": [
+    "~/.claude/skills/cloudflare-one (older snapshot, 2026-10-25)"
+   ],
+   "activate_when": "Task is on Cloudflare services",
+   "never_activate_when": "Non-Cloudflare hosting; never load bare 'cloudflare-one' alongside",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "security-audit",
+   "path": "~/.agents/skills/security-audit",
+   "source": "cloudflare/security-audit-skill",
+   "version": null,
+   "category": "security",
+   "role": "default",
+   "responsibility": "DEFAULT security workflow: guidance mode by default, six-phase audit only on explicit request",
+   "dependencies": [],
+   "duplicates": [
+    "ecc:security-review",
+    "engineering/security checks in code-review"
+   ],
+   "activate_when": "Auth, payments, input handling, APIs, secrets; explicit audit/pen-test",
+   "never_activate_when": "Typos, docs, styling-only changes",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:security-scan",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/security-scan",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "security-scanner",
+   "role": "independent-scanner",
+   "responsibility": "AgentShield scan of .claude config, hooks, MCP, permissions, secrets (different surface from app code)",
+   "dependencies": [
+    "npx ecc-agentshield (needs approval to run)"
+   ],
+   "duplicates": [],
+   "activate_when": "Changing hooks/MCP/permissions/agent config, or before sharing a .claude directory",
+   "never_activate_when": "Application source review",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:security-bounty-hunter",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/security-bounty-hunter",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "security",
+   "role": "specialist",
+   "responsibility": "Remote-reachable exploit hunting for bounty-style reports",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Explicit bounty/exploitability hunt",
+   "never_activate_when": "Routine reviews",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:agent-security-hardening",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/agent-security-hardening",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "security",
+   "role": "specialist",
+   "responsibility": "Hardening for AI agent runtimes/tool gateways",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Building an agent runtime",
+   "never_activate_when": "Ordinary web apps",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:security-reviewer (agent)",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/agents/security-reviewer.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "security-validation",
+   "role": "independent-validation",
+   "responsibility": "Independent second reviewer on Sonnet for critical production changes",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Critical change after security-audit pass",
+   "never_activate_when": "Routine changes",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "code-review",
+   "path": "built-in skill (not on disk)",
+   "source": "Claude Code built-in",
+   "version": null,
+   "category": "code-review",
+   "role": "default",
+   "responsibility": "DEFAULT reviewer: diff/PR, effort levels, optional --fix",
+   "dependencies": [],
+   "duplicates": [
+    "engineering:code-review",
+    "ecc:code-review"
+   ],
+   "activate_when": "Review of a diff, branch or PR",
+   "never_activate_when": "Trivial edits",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "review-changes",
+   "path": "<project>/.claude/skills/review-changes",
+   "source": "project-local",
+   "version": null,
+   "category": "code-review",
+   "role": "change-specific",
+   "responsibility": "Graph-based change/impact review (1.3KB); uses code-review-graph MCP",
+   "dependencies": [
+    "code-review-graph MCP"
+   ],
+   "duplicates": [],
+   "activate_when": "Small-to-medium change in a repo whose graph is built, as a cheaper substitute for code-review",
+   "never_activate_when": "Repos without .code-review-graph",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ponytail-review",
+   "path": "~/.claude/plugins/cache/ponytail/ponytail/4.10.0/.openclaw/skills/ponytail-review",
+   "source": "DietrichGebert/ponytail",
+   "version": "4.10.0",
+   "category": "code-review",
+   "role": "specialist",
+   "responsibility": "Over-engineering finder only (different dimension)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Asked to find code to delete",
+   "never_activate_when": "Correctness review",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "simplify",
+   "path": "built-in skill (not on disk)",
+   "source": "Claude Code built-in",
+   "version": null,
+   "category": "refactor",
+   "role": "simplifier",
+   "responsibility": "Applies simplification fixes (not a reviewer)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "After a change, to clean it up",
+   "never_activate_when": "Bug hunting",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:review-pr",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/review-pr.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "code-review",
+   "role": "critical-second-reviewer",
+   "responsibility": "Multi-agent PR pass (6 agents)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Critical PR needing second independent review",
+   "never_activate_when": "Routine changes (costly)",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "code-review-graph (MCP)",
+   "path": "mcp: code-review-graph",
+   "source": "MCP server",
+   "version": null,
+   "category": "codebase-graph",
+   "role": "primary-graph",
+   "responsibility": "Primary graph: AST call/import/test edges, impact radius, auto-updated by hook, queryable",
+   "dependencies": [
+    "git repo for auto-update hook"
+   ],
+   "duplicates": [],
+   "activate_when": "Any code-relationship question, impact analysis, review context",
+   "never_activate_when": "Pure-text search (use rg)",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "graphify",
+   "path": "~/.claude/skills/graphify",
+   "source": "graphify (unverified repo)",
+   "version": null,
+   "category": "codebase-graph",
+   "role": "secondary-graph",
+   "responsibility": "Multimodal graph (code+docs+images+video), report with god nodes (41KB ~10k tok)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Mixed corpus (docs/papers/media), or graphify-out/ already exists and question is conceptual",
+   "never_activate_when": "Code-only questions when code-review-graph exists; never rebuild when graphify-out/ exists",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "explore-codebase",
+   "path": "<project>/.claude/skills/explore-codebase",
+   "source": "project-local",
+   "version": null,
+   "category": "codebase-exploration",
+   "role": "exploration",
+   "responsibility": "Thin wrapper over code-review-graph for orientation (1.3KB)",
+   "dependencies": [
+    "code-review-graph MCP"
+   ],
+   "duplicates": [],
+   "activate_when": "First look at an unfamiliar repo with graph built",
+   "never_activate_when": "Repo has no graph",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:codebase-onboarding",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/codebase-onboarding",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "onboarding",
+   "role": "onboarding",
+   "responsibility": "Writes onboarding guide + starter CLAUDE.md (writes files)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Joining a repo that has no CLAUDE.md, or explicit onboarding doc request",
+   "never_activate_when": "Quick questions",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "grill-me",
+   "path": "~/.claude/skills/grill-me",
+   "source": "unverified",
+   "version": null,
+   "category": "planning-clarify",
+   "role": "clarify",
+   "responsibility": "One-question-at-a-time requirement interrogation",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Requirements unclear or plan needs stress test",
+   "never_activate_when": "Clear tasks",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:plan",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/plan.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "planning",
+   "role": "default",
+   "responsibility": "DEFAULT plan: restate, risks, steps, waits for confirmation",
+   "dependencies": [],
+   "duplicates": [
+    "ecc:prp-plan"
+   ],
+   "activate_when": "Standard feature/refactor needing a plan",
+   "never_activate_when": "Small edits",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:plan-prd",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/plan-prd.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "planning",
+   "role": "specialist",
+   "responsibility": "Lean PRD then hands to ecc:plan",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Product-level scoping",
+   "never_activate_when": "Engineering tasks",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "engineering:system-design",
+   "path": "plugin:engineering/skills/system-design",
+   "source": "synced engineering plugin",
+   "version": null,
+   "category": "architecture",
+   "role": "architecture",
+   "responsibility": "System design framework",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Designing a product architecture",
+   "never_activate_when": "Single-feature work",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "engineering:architecture",
+   "path": "plugin:engineering/skills/architecture",
+   "source": "synced engineering plugin",
+   "version": null,
+   "category": "architecture",
+   "role": "alternatives",
+   "responsibility": "ADR for technology choices / alternatives",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Comparing technology options",
+   "never_activate_when": "Routine work",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:blueprint",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/blueprint",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "planning",
+   "role": "large-plan",
+   "responsibility": "Multi-session, multi-agent construction plan",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Large multi-PR project",
+   "never_activate_when": "Single-session work",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:prp-plan",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/prp-plan.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "planning",
+   "role": "alias",
+   "responsibility": "Feature plan with codebase pattern extraction",
+   "dependencies": [],
+   "duplicates": [
+    "ecc:plan"
+   ],
+   "activate_when": "Never by default (overlaps ecc:plan)",
+   "never_activate_when": "Always",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:multi-plan",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/multi-plan.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "planning",
+   "role": "unavailable",
+   "responsibility": "Dual-model plan; REQUIRES external ccg-workflow runtime (not installed)",
+   "dependencies": [
+    "ccg-workflow runtime (absent)"
+   ],
+   "duplicates": [],
+   "activate_when": "Only if runtime installed AND user asks for dual-model drafts",
+   "never_activate_when": "Always otherwise",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:plan-orchestrate",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/plan-orchestrate",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "planning",
+   "role": "specialist",
+   "responsibility": "Turns an existing plan doc into ECC slash commands (generative only)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "A plan document exists and user wants step commands",
+   "never_activate_when": "No plan doc",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:model-route",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/model-route.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "model-routing",
+   "role": "canonical-router",
+   "responsibility": "Recommend model tier by complexity/risk/budget (697B)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Non-trivial task where model choice matters",
+   "never_activate_when": "Quick tasks",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:cost-tracking",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/cost-tracking",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "cost-reporting",
+   "role": "reporting",
+   "responsibility": "Spend/usage from ~/.claude/metrics/costs.jsonl. THAT FILE DOES NOT EXIST (ECC hooks disabled)",
+   "dependencies": [
+    "ECC cost-tracker hook enabled"
+   ],
+   "duplicates": [],
+   "activate_when": "User asks about spend",
+   "never_activate_when": "Any task unless metrics log exists",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:cost-report",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/commands/cost-report.md",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "cost-reporting",
+   "role": "reporting",
+   "responsibility": "Terminal/CSV report from same log",
+   "dependencies": [
+    "ECC cost-tracker hook enabled"
+   ],
+   "duplicates": [],
+   "activate_when": "User asks for report AND log exists",
+   "never_activate_when": "Trivial tasks",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:context-budget",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/context-budget",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "context",
+   "role": "context",
+   "responsibility": "Routes to native context meter; static audit only on request",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Context capacity questions",
+   "never_activate_when": "Normal tasks",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:strategic-compact",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/strategic-compact",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "context",
+   "role": "context",
+   "responsibility": "Compaction timing",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Long session near limit",
+   "never_activate_when": "Short sessions",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:token-budget-advisor",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/token-budget-advisor",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "budget",
+   "role": "budget",
+   "responsibility": "Response-depth choice (25/50/75/100%)",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "User asks for a short/long answer choice",
+   "never_activate_when": "Default",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:cost-aware-llm-pipeline",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/cost-aware-llm-pipeline",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "cost-execution",
+   "role": "app-dev",
+   "responsibility": "Routing/caching patterns when BUILDING LLM apps",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Building an app that calls LLM APIs",
+   "never_activate_when": "Using Claude Code itself",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:prompt-caching-strategy",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/prompt-caching-strategy",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "cost-execution",
+   "role": "app-dev",
+   "responsibility": "Prompt caching design for LLM apps",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Building LLM apps",
+   "never_activate_when": "Normal coding",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  },
+  {
+   "canonical": "ecc:token-card",
+   "path": "~/.claude/plugins/cache/ecc/ecc/2.2.3/skills/token-card",
+   "source": "ecc@2.2.3 (affaan-m/ECC)",
+   "version": "2.2.3",
+   "category": "visualization",
+   "role": "visualization",
+   "responsibility": "Commits a usage card file to a repo",
+   "dependencies": [],
+   "duplicates": [],
+   "activate_when": "Explicit request only",
+   "never_activate_when": "Always otherwise",
+   "security_status": "frontmatter+headings read; bodies not scanned for scripts/network calls",
+   "last_verified": "2026-11-12"
+  }
+ ]
+}

@@ -1,0 +1,98 @@
+{
+ "ui_design_web": {
+  "canonical": "design-taste-frontend",
+  "aliases": [
+   "ecc:frontend-design-direction",
+   "ui-ux-pro-max (default use)",
+   "design (UI route)"
+  ]
+ },
+ "ui_design_app": {
+  "canonical": "ui-ux-taste",
+  "aliases": []
+ },
+ "design_system": {
+  "canonical": "ecc:design-system",
+  "aliases": [
+   "design-system"
+  ]
+ },
+ "ui_implementation": {
+  "canonical": "ui-styling",
+  "aliases": [],
+  "note": "support only when shadcn/Tailwind"
+ },
+ "banner": {
+  "canonical": "banner-design",
+  "aliases": [
+   "design (banner route)"
+  ]
+ },
+ "slides": {
+  "canonical": "slides",
+  "aliases": [
+   "design (slides route)",
+   "ecc:frontend-slides"
+  ]
+ },
+ "cloudflare": {
+  "canonical_prefix": "cloudflare:",
+  "bare_to_namespaced": {
+   "agents-sdk": "cloudflare:agents-sdk",
+   "basin": "cloudflare:basin",
+   "cf-cli": "cloudflare:cf-cli",
+   "cloudflare": "cloudflare:cloudflare",
+   "cloudflare-email-service": "cloudflare:cloudflare-email-service",
+   "cloudflare-one": "cloudflare:cloudflare-one",
+   "cloudflare-one-migrations": "cloudflare:cloudflare-one-migrations",
+   "durable-objects": "cloudflare:durable-objects",
+   "gateway-workers": "cloudflare:gateway-workers",
+   "k2": "cloudflare:k2",
+   "nextjs-on-cloudflare": "cloudflare:nextjs-on-cloudflare",
+   "sandbox-migrate-to-next": "cloudflare:sandbox-migrate-to-next",
+   "sandbox-next": "cloudflare:sandbox-next",
+   "sandbox-stable": "cloudflare:sandbox-stable",
+   "turnstile-spin": "cloudflare:turnstile-spin",
+   "web-perf": "cloudflare:web-perf",
+   "workers-best-practices": "cloudflare:workers-best-practices",
+   "workers-profiling": "cloudflare:workers-profiling",
+   "wrangler": "cloudflare:wrangler"
+  },
+  "rule": "Never activate bare and namespaced of the same name; bare dir is the 2026-10-25 snapshot, namespaced is v1.0.4 (2026-11-08)"
+ },
+ "security_default": {
+  "canonical": "security-audit",
+  "aliases": [
+   "ecc:security-review",
+   "security-review (checklist use)",
+   "ecc:security-reviewer (as default)"
+  ]
+ },
+ "code_review": {
+  "canonical": "code-review",
+  "aliases": [
+   "engineering:code-review",
+   "ecc:code-review"
+  ]
+ },
+ "planning_standard": {
+  "canonical": "ecc:plan",
+  "aliases": [
+   "ecc:prp-plan"
+  ]
+ },
+ "model_routing": {
+  "canonical": "ecc:model-route",
+  "aliases": [
+   "ecc:cost-aware-llm-pipeline (apps only)"
+  ]
+ },
+ "codebase_graph": {
+  "canonical": "code-review-graph (MCP)",
+  "aliases": [],
+  "secondary": "graphify (non-code corpora)"
+ },
+ "not_ui": {
+  "note": "ecc:taste, ecc:taste-application, ecc:taste-distillation are VIDEO skills (angelcore music video / LUT style packs). Never match for UI taste requests."
+ }
+}
