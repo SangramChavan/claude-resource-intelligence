@@ -1,5 +1,7 @@
 # CRI routing policy (orchestration only)
 
+Governing principle: `config/native-first-policy.md` (native first, configure second, extend third, build custom only when proven necessary). Read it before adding any CRI component.
+
 CRI selects; it does not re-implement. Model choice = `ecc:model-route`. Cost data = ECC cost-tracking (needs `~/.claude/metrics/costs.jsonl`). Context = `ecc:context-budget`.
 
 ## Tiers
